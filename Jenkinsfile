@@ -1,5 +1,6 @@
 pipeline{
-    agent:any{
+    agent:any
+    
       enviroment  {
             IMAGE_NAME:"devops-demo-app"
             CONTAINER_NAME:"demo-container"
@@ -12,14 +13,14 @@ pipeline{
                 echo '✅ Dependencies installed successfully'
                }
             }
-        stage('Docker Build') {
+         stage('Docker Build') {
             steps {
                 echo '🐳 Stage 3: Building Docker image...'
                 bat "docker build -t ${IMAGE_NAME} ."
                 echo "✅ Image '${IMAGE_NAME}' built successfully"
             }
-        }
-        stage('Docker Deploy') {
+         }
+         stage('Docker Deploy') {
             steps {
                 echo '🚀 Stage 4: Deploying container...'
 
@@ -34,9 +35,9 @@ pipeline{
             }
         }
 
-        }
+        
     }
-      post {gi
+      post {
         success {
             echo '''
             ============================================
