@@ -1,6 +1,8 @@
-from flask import flask,jsonify
-app=flask(__name__)
+from flask import Flask, jsonify
 
+app = Flask(__name__)
+
+# Sample data — simulates a database
 students = [
     {"id": 1, "name": "Alice",   "grade": "A"},
     {"id": 2, "name": "Bob",     "grade": "B+"},
@@ -8,9 +10,9 @@ students = [
 ]
 
 @app.route('/')
-def home ():
+def home():
     return '''
-      <html>
+    <html>
     <head>
         <title>DevOps Demo App</title>
         <style>
@@ -28,17 +30,18 @@ def home ():
     </body>
     </html>
     '''
-@app.route('/student')
-def get_student():
+
+@app.route('/students')
+def get_students():
     return jsonify({
-        "status":"success",
+        "status": "success",
         "count": len(students),
         "data": students
     })
+
 @app.route('/health')
 def health():
-    return jsonify({"student":"healty"})
+    return jsonify({"status": "healthy", "app": "DevOps Demo"})
 
-if __name__= '__main__':
-    app.run(host:'0.0.0.0',port:5000,debug=false)
-    
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', port=5000, debug=False)
