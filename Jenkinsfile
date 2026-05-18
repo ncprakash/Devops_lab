@@ -9,12 +9,12 @@ pipeline {
 
     stages {
         stage('Build') {
-            steps {
-                echo '📦 Stage 1: Installing dependencies...'
-                bat 'pip install -r requirements.txt'
-                echo '✅ Dependencies installed successfully'
-            }
-        }
+    steps {
+        echo '📦 Checking workspace contents...'
+        bat 'dir'                          // shows ALL files Jenkins downloaded
+        bat 'pip install -r requirements.txt'
+    }
+}
         
         stage('Docker Build') {
             steps {
