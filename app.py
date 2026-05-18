@@ -31,7 +31,7 @@ def home ():
 @app.route('/student')
 def get_student():
     return jsonify({
-        "status":"success".
+        "status":"success",
         "count": len(students),
         "data": students
     })
